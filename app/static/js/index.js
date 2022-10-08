@@ -1,0 +1,1 @@
+//jakbys potrzebowal js do index.html

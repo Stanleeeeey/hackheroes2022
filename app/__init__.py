@@ -15,3 +15,5 @@ app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg'])
 app.config['STATIC_URL_PATH'] = os.path.join(MYDIR+'/'+ "static")
 
 from app import models, routes
+
+app.run()

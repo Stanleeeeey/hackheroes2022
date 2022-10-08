@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--connect to js and css-->
+    {%block imports%}
+    <!--uwaga dla pawla url_for potrzebne wiec je uwzgledniaj w nastepnych plikach-->
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    {%endblock%}
+
+    <title>Document</title>
+</head>
+<body>
+    <!--pasek nawigacyjny-->
+    <nav>
+
+    </nav>
+    {%block content%}
+    <!--PABLO STRONA GLOWNA, to smieszne cos z {} to jinja2 w skrocie to cos pozwoli ci nie pisac calego html od nowa dla innych podstron tylko piszesz ze zmieniasz blok content-->
+    {%endblock%}
+</body>
+</html>
