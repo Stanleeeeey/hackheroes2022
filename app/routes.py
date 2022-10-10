@@ -1,3 +1,6 @@
+# file responsible for routing and operations related to User actions
+# coders responsible for file : Michal Koren
+
 from app import app
 from flask import render_template
 import jinja2

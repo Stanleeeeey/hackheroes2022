@@ -1,3 +1,6 @@
+# File responsible fot initializing app
+# coders responsible for file: Stanislaw Kawulok
+
 from flask import Flask
 import flask_sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -21,9 +24,13 @@ migation = Migrate(app, db)
 
 
 
-from app import models, routes
+from app import models
+
 
 with app.app_context():
     db.create_all()
+
+
+from app import routes
 
 app.run()
