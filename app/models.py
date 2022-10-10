@@ -69,5 +69,6 @@ def AddEvent(title:str, creator:str, image:str, descriprion:str, date:datetime, 
 def GetAllEvents():
     return Event.query.all()
 
-def GetEventById(id:int):
-    return Event.qyery.filter_by(id = id).first()
+def GetEventById(id : int):
+    
+    return Event.query.filter_by(id = id).first()
