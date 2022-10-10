@@ -1,6 +1,7 @@
 # File responsible for database managment contains rows definitions, function to make using it simpler 
 # coders responsible for db operations: Stanislaw Kawulok
 
+from datetime import datetime
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -35,7 +36,7 @@ class Event(db.Model):
 
 #user related functions
 
-def AddUser(name, mail,password, city, description, role):
+def AddUser(name:str, mail:str,password:str, city:str, description:str, role:str):
     try:
         newUser = User(name = name, mail = mail, password = password, city = city, description = description, role = role)
         newUser.set_password()
@@ -48,9 +49,12 @@ def AddUser(name, mail,password, city, description, role):
         print(f'AddUser failed due to the error {e}')
         return False
 
+def GetAllUsers():
+    return User.query.all()
+
 # event related functions
 
-def AddEvent(title, creator, image, descriprion, date, location):
+def AddEvent(title:str, creator:str, image:str, descriprion:str, date:datetime, location:str):
     try:
         newEvent = Event(title = title, creator = creator, image = image, description =descriprion,date = date, location = location )
 
@@ -64,3 +68,6 @@ def AddEvent(title, creator, image, descriprion, date, location):
 
 def GetAllEvents():
     return Event.query.all()
+
+def GetEventById(id:int):
+    return Event.qyery.filter_by(id = id).first()
