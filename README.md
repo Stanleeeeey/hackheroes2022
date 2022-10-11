@@ -6,7 +6,7 @@ jak odpalacie to
 `python run.py`
 trza miec waza i biblioteki
 
-pawel: dodajesz plik do app/templates 
+pawel: dodajesz plik html do app/templates 
 podlaczas go
 ```html
     <script src="{{ url_for('static', filename='js/nazwajs.js') }}" defer></script>
