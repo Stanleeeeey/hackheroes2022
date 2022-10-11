@@ -7,6 +7,11 @@ coders responsible for file : Pawel Czujowski-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!--import font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <!--connect to js and css-->
     {%block imports%}
     <!--uwaga dla pawla url_for potrzebne wiec je uwzgledniaj w nastepnych plikach-->
@@ -18,11 +23,32 @@ coders responsible for file : Pawel Czujowski-->
 </head>
 <body>
     <!--pasek nawigacyjny-->
-    <nav>
-
-    </nav>
+    <div class="nav-wrap">
+        <nav>
+            <div class="redirects">
+                <a href="/">Strona Główna</a>
+                <a href="/about">O nas</a>
+                <a href="/events">Eventy </a>
+            </div>
+            <div class="user-actions">
+                <a href = "login">
+                <button>Zaloguj się</button></a>
+                <a href="/signup">
+                <button >Rejstracja</button>
+                </a>
+            </div>
+        </nav>
+    </div>
     {%block content%}
     <!--PABLO STRONA GLOWNA, to smieszne cos z {} to jinja2 w skrocie to cos pozwoli ci nie pisac calego html od nowa dla innych podstron tylko piszesz ze zmieniasz blok content-->
+    
+    <div class="circle main-decor">
+        <h1>
+            Fajna Ta Nasza Strona
+        </h1>
+    </div>
+    <div class="cut-main-image"></div>
+    <img src="https://visitwroclaw.eu/en/themes/video/promo-wroc.jpg" class="main-image"></a>
     {%endblock%}
 </body>
 </html>

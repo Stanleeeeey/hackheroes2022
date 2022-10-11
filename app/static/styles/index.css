@@ -1,3 +1,139 @@
 /*file responsible for css on main webpage + default css like navbar
-coders responsible for file : Pawel Czujowski*/
+coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
 /*css do index.html*/
+*{
+    padding:0;
+    margin:0;
+    --primary-color:#15FF73;
+    --secondary-color:#10BF56;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+
+.nav-wrap{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    display: flex;
+    justify-content: right;
+    position: fixed;
+    z-index:3;
+
+}
+
+@media (min-width:1150px){
+    nav{
+        position: fixed;
+        z-index:3;
+        right:0;
+        width:calc(50vw - 3rem);
+        padding:1rem;
+        padding-left:2rem;
+        display: inline-flex;
+        justify-content: space-between;
+        border:0px solid;
+        border-radius:30px 0px 0px 30px;
+        background-color:var(--primary-color)
+    }
+
+    .redirects{
+        display:flex;
+        gap:30px;
+        width: min-content;
+        text-align: center;
+    }
+
+    .redirects a{
+        text-decoration: none;
+        font-weight: bold;
+        color:white;
+        white-space: nowrap; 
+        text-align: center;
+
+    }
+
+    .user-actions{
+        display: flex;
+        justify-content: right;
+        gap:30px;
+        width: min-content !important;
+
+    }
+
+    .user-actions button{
+        background-color: white;
+        color:black;
+        padding:.5rem;
+        border-radius:30px;
+        border:1px solid black;
+        white-space: nowrap; 
+
+        
+
+
+    }
+}
+
+@media(max-width:1150px){
+    /*dodac css dla mneijszych rezoluzji*/
+}
+
+.circle{
+
+    width:20vh;
+    height:20vh;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+}
+
+.main-decor:before{
+    content:'';
+    top: 40vh;
+    left:3rem;
+    position: fixed;
+    width:20vh;
+    height:20vh;
+    z-index:1;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+}
+
+.main-decor{
+
+    top: 40vh;
+    left:5rem;
+    position: fixed;
+    width:20vh;
+    height:20vh;
+    z-index:1;
+    text-align: center;
+    border-radius: 100%;
+    background-color:var(--secondary-color) ;
+}
+
+.main-decor h1{
+    position: relative;
+    z-index:3;
+    margin-top:4vh;
+    white-space: nowrap;
+}
+
+.main-image{
+    width:55vw;
+    height:100vw;
+    right:0;
+    position: fixed;
+    object-fit: cover;
+    z-index:1;
+}
+
+.cut-main-image{
+    content:0;
+    z-index:2;
+    transform: skew(-20deg);
+    height:100vh;
+    width:20vw;
+    right:45vw;
+    position: fixed;
+    background-color: white;
+}
