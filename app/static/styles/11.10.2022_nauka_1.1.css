@@ -1,4 +1,24 @@
-
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  background-color: white !important;
+  width:100vw;
+  height:100vh;
+}
+.nazwa_strony{
+  text-align: center;
+  /*background-image: ;tu trzeba wstawić obrazek*/
+}
+.menu{
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+}
+.przyciski1{
+  
+}
 table, th, td {
-  border:1px solid black;
+  border:1px solid white;
 }
