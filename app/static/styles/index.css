@@ -1,5 +1,5 @@
 /*file responsible for css on main webpage + default css like navbar
-coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
+coders responsible for file :  Stanislaw Kawulok*/
 /*css do index.html*/
 *{
     padding:0;
@@ -9,6 +9,10 @@ coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
     font-family: 'Roboto', sans-serif;
 
 
+}
+
+.menu-button{
+    display:none;
 }
 
 .nav-wrap{
@@ -34,6 +38,7 @@ coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
         border:0px solid;
         border-radius:30px 0px 0px 30px;
         background-color:var(--primary-color)
+        
     }
 
     .redirects{
@@ -60,22 +65,99 @@ coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
 
     }
 
-    .user-actions button{
-        background-color: white;
-        color:black;
-        padding:.5rem;
-        border-radius:30px;
-        border:1px solid black;
-        white-space: nowrap; 
 
-        
+}
+
+.user-actions button{
+    background-color: white;
+    color:black;
+    padding:.5rem;
+    border-radius:30px;
+    border:1px solid black;
+    white-space: nowrap; 
+
+    
 
 
-    }
+}
+.hidden-menu{
+    display: none;
 }
 
 @media(max-width:1150px){
     /*dodac css dla mneijszych rezoluzji*/
+    .nav-wrap{
+        display:none;
+    
+    }
+
+    .menu-button{
+        display:inline;
+        color:white;
+        background-color: var(--primary-color);
+        z-index:5;
+        position: fixed;
+        top:1rem;
+        padding:2rem;
+        
+        right:0;
+        border:0px solid;
+        border-radius: 30px 0 0px 30px;
+    }
+
+
+    .hidden-menu{
+        width:0;
+        height:0;
+        transition    : height 2s; 
+        position: fixed;
+        background-color: var(--primary-color);
+        top:7rem;
+    }
+
+    .visible-menu{
+        display: block;
+        position: fixed;
+        background-color: var(--primary-color);
+        top:0rem;
+        padding-top:1rem;
+        z-index:4;
+        width:100vw;
+        height:fit-content;
+        
+
+    }
+    nav{
+        display: block;
+    }
+
+    .redirects{
+        display:block;
+        padding-top:1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .redirects a{
+        text-decoration: none;
+        font-weight: bold;
+        color:white;
+        white-space: nowrap; 
+        text-align: center;
+
+    }
+
+    .user-actions{
+        padding:1rem;
+        display: flex;
+        gap:30px;
+        justify-content: center;
+        width: 100% ;
+
+    }
+
+
+
 }
 
 .circle{
@@ -115,7 +197,8 @@ coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
     position: relative;
     z-index:7;
     margin-top:10vh;
-    white-space: nowrap;
+    text-align: left;
+    
 }
 
 .main-image{
@@ -130,6 +213,7 @@ coders responsible for file : Pawel Czujowski, Stanislaw Kawulok*/
 .cut-main-image{
     content:0;
     z-index:3;
+    top:0;
     transform: skew(-20deg);
     height:100vh;
     width:100vw;
