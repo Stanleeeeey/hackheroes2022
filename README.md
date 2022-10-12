@@ -6,6 +6,13 @@ jak odpalacie to
 `python run.py`
 trza miec waza i biblioteki
 
+pawel: dodajesz plik html do app/templates 
+podlaczas go
+```html
+    <script src="{{ url_for('static', filename='js/nazwajs.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/nazwacss.css') }}">
+```
+przy czym nazwacss.css umiesc w app/static/styles ,a nazwajs.js w app/static/js
 # podzial rol
 
 backend:
