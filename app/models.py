@@ -52,6 +52,18 @@ def AddUser(name:str, mail:str,password:str, city:str, description:str, role:str
 def GetAllUsers():
     return User.query.all()
 
+# True if user iwth given password exists else false
+def Login(username:str, password:str):
+    user = User.query.filter_by(name=username).first()
+
+    if user is None:
+        return False
+    elif user.check_password(password):
+        return True
+    else:
+        return False
+
+    
 # event related functions
 
 def AddEvent(title:str, creator:str, image:str, descriprion:str, date:datetime, location:str):
