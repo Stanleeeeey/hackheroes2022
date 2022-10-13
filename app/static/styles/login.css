@@ -1,0 +1,80 @@
+*{
+    padding:0;
+    margin:0;
+    --primary-color:#15FF73;
+    --secondary-color:#10BF56;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+
+.circle-login:before{
+    content:'';
+    top: 30vh;
+    left:calc(50vw - 20vh - 2rem);
+    position: fixed;
+    width:40vh;
+    height:40vh;
+    z-index:5;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+}
+
+.circle-login{
+
+    top: 30vh;
+    left:calc(50vw - 20vh);
+    position: fixed;
+    width:40vh;
+    height:40vh;
+   
+    z-index:6;
+    text-align: center;
+    border-radius: 100%;
+    background-color:var(--secondary-color) ;
+}
+
+.circle-login form{
+    z-index: 7;
+    position: relative;
+    left:-1rem;
+    padding:1rem;
+    width:100%;
+    height:100%;
+    
+   
+    display: block;
+}
+
+.circle-login input{
+    z-index: 7;
+    width:100%;
+    padding:.5rem;
+    border-radius: 30px;
+    position: relative;
+    margin-top:.5rem;
+}
+
+.circle-login button{
+    z-index: 7;
+    
+    padding:1rem;
+    border-radius: 30px;
+    position: relative;
+    margin-top:1rem;
+    opacity:1;
+    transition: .2s;
+}
+
+.circle-login button:hover{
+    z-index: 7;
+    
+    padding:1.5rem;
+    border-radius: 30px;
+    border-color: var(--primary-color);
+    position: relative;
+    margin-top:.5rem;
+    opacity:0.8;
+    transition: .3s;;
+}
+
