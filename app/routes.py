@@ -4,7 +4,7 @@
 from app import app, load_user
 from flask import render_template, request, flash
 from flask_login import login_user, current_user
-from app.models import Login, GetUserByUserName, AddUser
+from app.models import Login, GetUserByUserName, AddUser, GetAllEvents
 import jinja2
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -17,6 +17,8 @@ class LoginForm(FlaskForm):
 def IsLoged():
   return current_user.is_authenticated 
 
+def IsLoged():
+  return current_user.is_authenticated 
 
 @app.route('/')
 def home_page():
