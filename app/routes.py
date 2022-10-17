@@ -4,7 +4,7 @@
 from app import app, load_user
 from flask import render_template, request, flash
 from flask_login import login_user
-from app.models import Login, GetUserByUserName
+from app.models import Login, GetUserByUserName, GetAllEvents
 import jinja2
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -43,5 +43,5 @@ def signup():
 
 @app.route('/events')
 def all_events():
-    return render_template('events.html')
+    return render_template('events.html', events= GetAllEvents())
 

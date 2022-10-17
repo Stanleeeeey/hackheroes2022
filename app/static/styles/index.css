@@ -206,6 +206,7 @@ coders responsible for file :  Stanislaw Kawulok*/
     height:100vh;
     right:0;
     position: fixed;
+    top:0;
     object-fit: cover;
     z-index:1;
 }
