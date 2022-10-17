@@ -20,3 +20,7 @@ def login():
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+@app.route('/events')
+def all_events():
+    return render_template('events.html')
