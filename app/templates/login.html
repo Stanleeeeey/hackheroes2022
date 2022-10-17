@@ -10,9 +10,10 @@
     
     <h1>Zaloguj się</h1><br>
     <label for="">Nazwa użytkownika</label><br>
-    <input name="username" type="text"><br>
+    <!--<input name="username" type="text"><br>-->
+    {{form.username(size=256)}}<br>
     <label for="">hasło</label><br>
-    <input name="password" type="password"><br>
+    {{form.password(size=256)}}<br>
     <button type="submit"> zaloguj się</button><br>
 
 </form>

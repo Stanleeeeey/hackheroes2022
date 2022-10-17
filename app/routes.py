@@ -1,26 +1,46 @@
 # file responsible for routing and operations related to User actions
 # coders responsible for file : Michal Koren, Stanislaw Kawulok
 
-from app import app
-from flask import render_template
+from app import app, load_user
+from flask import render_template, request, flash
+from flask_login import login_user
+from app.models import Login, GetUserByUserName
 import jinja2
-#KOREN ty tutaj robisz sciezki te takie @app.route('/')
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+
+
+class LoginForm(FlaskForm):
+    username = StringField('Username')
+    password = PasswordField('Password')
+    submit = SubmitField('Submit')
 
 #main webpage
 
+
 @app.route('/')
 def home_page():
-    #zwroc plik index.html tak jakby co
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
-
+    form = LoginForm()
+    if request.method == 'GET':
+        return render_template('login.html', form = form) 
+    else:
+        user = request.form.get('username')
+        password = request.form.get('password')
+        if Login(user, password):
+            login_user(GetUserByUserName(user))
+            return render_template('index.html')
+        else:
+            flash('Zły login lub hasło')
+            return render_template('login.html', form = form)         
 @app.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template('login.html')
 
 @app.route('/events')
 def all_events():
     return render_template('events.html')
+

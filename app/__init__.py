@@ -6,6 +6,7 @@ import flask_sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import migrate, Migrate
 import os
+from flask_login import LoginManager
 
 
 MYDIR = os.path.dirname(__file__)
@@ -25,11 +26,14 @@ migation = Migrate(app, db)
 
 
 from app import models
-
-
+login_manager = LoginManager()
+login_manager.init_app(app)
+@login_manager.user_loader
+def load_user(user_id):
+    return models.GetUserById(user_id)
 with app.app_context():
     db.create_all()
-
+    models.AddUser('py', 'py@py.com', 'py', 'wro', '', 'wąż')
 
 from app import routes
 
