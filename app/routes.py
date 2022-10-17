@@ -38,6 +38,7 @@ def login():
             return render_template('login.html', form = form)         
 @app.route('/signup')
 def signup():
+    form = LoginForm()
     return render_template('login.html', form = form)
 
 @app.route('/events')
