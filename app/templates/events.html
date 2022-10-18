@@ -13,15 +13,17 @@
 </div>
 <div class="events-wrap">
 {%for event in events%}
-<div class="event-card">
-    <img src="{{event.image}}">
-    <div class="event-info">
-        <h1>{{event.title}}</h1>
-        <p>data {{event.date}}</p>
-        <p>miejce {{event.location}}</p>
-        <p>tworca {{event.creator}}</p>
+<a class="event-card" style="text-decoration: none; color:black" href="{{'/event/' + event.title}}">
+    <div class="event-card">
+        <img src="{{event.image}}">
+        <div class="event-info">
+            <h1>{{event.title}}</h1>
+            <p>data {{event.date}}</p>
+            <p>miejce {{event.location}}</p>
+            <p>tworca {{event.creator}}</p>
+        </div>
     </div>
-</div>
+</a>
 {%endfor%}
 
 </div>

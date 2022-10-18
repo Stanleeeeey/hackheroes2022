@@ -97,3 +97,6 @@ def GetAllEvents():
 def GetEventById(id : int):
     
     return Event.query.filter_by(id = id).first()
+
+def GetEventByTitle(title : str):
+    return Event.query.filter_by(title = title).first()

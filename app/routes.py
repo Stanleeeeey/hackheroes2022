@@ -4,7 +4,7 @@
 from app import app, load_user
 from flask import render_template, request, flash
 from flask_login import login_user, current_user
-from app.models import Login, GetUserByUserName, AddUser, GetAllEvents
+from app.models import Login, GetUserByUserName, AddUser, GetAllEvents, GetEventByTitle
 import jinja2
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -55,5 +55,13 @@ def signup():
 
 @app.route('/events')
 def all_events():
+    print(GetAllEvents())
     return render_template('events.html', events= GetAllEvents(), loged = IsLoged())
 
+@app.route('/event/<title>')
+def event(title):
+    event = GetEventByTitle(title)
+    if event is None:
+        return render_template('event.html', event = "None" )
+    else:
+        return render_template('event.html', event = event )

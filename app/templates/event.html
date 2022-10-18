@@ -1,0 +1,34 @@
+{%extends "index.html"%}
+
+{%block imports %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/event.css') }}">
+{%endblock%}
+
+
+{%block content%}
+<div class="page">
+    {%if event == "None" %}
+        <div class="circle main-decor">
+            <h1>this is event you're looking for</h1>
+        </div>
+    {%else%}
+        <div class="event">
+            <h1>{{event.title}}</h1>
+            <div class="event-detail">
+                <div class="data">
+                    <p>kiedy?&nbsp;  {{event.date}}</p>
+                    <p>gdzie?&nbsp; {{event.location}}</p>
+                </div>
+                <div class="description">
+                    <p>{{event.description}}</p>
+                </div>
+            </div>
+        </div>
+    {%endif%}
+
+    <div class="cut-main-image">
+
+    </div>
+    <img src="{{event.image}}" class="main-image"></a>
+</div>
+{%endblock%}
