@@ -9,6 +9,7 @@ from app.models import Login, GetUserByUserName, AddUser, GetAllEvents, GetEvent
 import jinja2
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
+from werkzeug.exceptions import HTTPException
 class LoginForm(FlaskForm):
     username = StringField('Username')
     password = PasswordField('Password')
@@ -18,7 +19,9 @@ class LoginForm(FlaskForm):
 def IsLoged():
   return current_user.is_authenticated 
 
-
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/')
 def home_page():
@@ -74,3 +77,12 @@ def event(title):
         return render_template('event.html', event = "None" )
     else:
         return render_template('event.html', event = event )
+
+@app.errorhandler(HTTPException)
+def handle_bad_request(e):
+    return render_template('error.html', name = e.code, desc = e.description)
+
+#PODSUMOWANIE
+# TO DO
+# /account
+# /add

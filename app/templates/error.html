@@ -1,0 +1,17 @@
+{%extends "index.html"%}
+
+{%block imports%}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/error.css') }}">
+{%endblock%}
+
+{%block content%}
+<div class="site-wrap">
+    <div class="error">
+        <h1>Ups... &nbsp; {{name}}</h1>
+        <p>{{desc}}</p>
+    </div>
+</div>
+<div class="cut-main-image"></div>
+<img src="https://visitwroclaw.eu/en/themes/video/promo-wroc.jpg" class="main-image"></a>
+<div class="circle bottom-decor"></div>
+{%endblock%}
