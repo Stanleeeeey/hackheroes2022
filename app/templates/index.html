@@ -29,11 +29,13 @@ coders responsible for file : Stanislaw Kawulok-->
     <!--pasek nawigacyjny-->
     <div class="nav-wrap">
         <nav>
+            
             <div class="redirects">
                 <a href="/">Strona Główna</a>
                 <a href="/about">O nas</a>
                 <a href="/events">Eventy </a>
             </div>
+            {%if loged == False%}
             <div class="user-actions">
                 <a href = "login">
                 <button>Zaloguj się</button></a>
@@ -41,6 +43,18 @@ coders responsible for file : Stanislaw Kawulok-->
                 <button >Rejstracja</button>
                 </a>
             </div>
+            {%else%}
+            <div class="user-actions">
+                <a href = "/logout">
+                <button>wyloguj się</button></a>
+                <a href="/account">
+                <button >konto</button>
+                </a>
+                <a href="/add-event">
+                    <button >dodaj</button>
+                </a>
+            </div>
+            {%endif%}
         </nav>
     </div>
     <button id="menu-button" class="menu-button" onclick="ShowMenu()">
@@ -51,11 +65,13 @@ coders responsible for file : Stanislaw Kawulok-->
 
     <div class="hidden-menu" id="hidden-menu">
         <nav>
+
             <div class="redirects">
                 <a href="/">Strona Główna</a><br>
                 <a href="/about">O nas</a><br>
                 <a href="/events">Eventy </a><br>
             </div>
+            {%if loged == False%}
             <div class="user-actions">
                 <a href = "login">
                 <button>Zaloguj się</button></a>
@@ -63,6 +79,18 @@ coders responsible for file : Stanislaw Kawulok-->
                 <button >Rejstracja</button>
                 </a>
             </div>
+            {%else%}
+            <div class="user-actions">
+                <a href = "/logout">
+                <button>wyloguj się</button></a>
+                <a href="/account">
+                <button >konto</button>
+                </a>
+                <a href="/add-event">
+                    <button >dodaj</button>
+                </a>
+            </div>
+            {%endif%}
         </nav>
     </div>
     {%block content%}
