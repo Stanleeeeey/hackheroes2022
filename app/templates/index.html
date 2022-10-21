@@ -93,6 +93,16 @@ coders responsible for file : Stanislaw Kawulok-->
             {%endif%}
         </nav>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes style="z-index:999;color:black;position: fixed;">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
     {%block content%}
     
     <div class="circle main-decor">

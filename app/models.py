@@ -76,6 +76,24 @@ def Login(username:str, password:str):
     else:
         return False
 
+def EditUserPassword(id,  password):
+    user = User.query.filter_by(id = id).first()
+
+    user.password = password
+    user.set_password()
+
+    db.session.commit()
+
+
+def EditUser(id, name, city, description, mail):
+    user = User.query.filter_by(id = id).first()
+
+    user.name = name
+    user.city = city
+    user.description = description
+    user.mail = mail
+
+    db.session.commit()
     
 # event related functions
 

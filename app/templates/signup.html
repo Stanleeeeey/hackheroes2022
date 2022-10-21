@@ -1,18 +1,26 @@
 {%extends "index.html" %}
 
 {%block imports%}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/signup.css') }}">
 {%endblock%}
 
 {%block content %}
 <div class="circle-login">
-<form method = POST action = "/login">
+<form method = POST action = "/signup">
     
     <h1>Zarejestruj się</h1><br>
     <label for="">Nazwa użytkownika</label><br>
     {{form.username(size=256)}}<br>
+    <label for="">email</label><br>
+    {{form.mail(size=256)}}<br>
     <label for="">hasło</label><br>
     {{form.password(size=256)}}<br>
+    <label for="">powtórz hasło</label><br>
+    {{form.repeat_password(size=256)}}<br>
+    <label for="">miasto</label><br>
+    {{form.city(size=256)}}<br>
+    <label for="">O tobie</label><br>
+    {{form.description(size=256)}}<br>
     <button type="submit"> zarejestruj się</button><br>
 
 </form>

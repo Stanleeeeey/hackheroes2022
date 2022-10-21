@@ -1,0 +1,38 @@
+{%extends 'index.html'%}
+
+
+{%block imports%}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/account.css') }}">
+{%endblock%}
+
+
+{%block content%}
+
+<div class="content">
+    <h1>Hej {{user.name}}</h1>
+
+    <div class="user-info">
+        <form action="/account" method="POST" class="edit-user">
+               
+            
+            <label for="">Nazwa użytkownika</label><br>
+            {{form.username(size=256, value=user.name)}}<br>
+            <label for="">email</label><br>
+            {{form.mail(size=256,  value=user.mail)}}<br>
+            <label for="">hasło</label><br>
+            {{form.password(size=256)}}<br>
+            <label for="">powtórz hasło</label><br>
+            {{form.repeat_password(size=256)}}<br>
+            <label for="">miasto</label><br>
+            {{form.city(size=256,  value=user.city)}}<br>
+            <label for="">O tobie</label><br>
+            <textarea name="description" required>{{user.description}}</textarea><br>
+            <button type="submit"> edytuj dane</button><br>
+        </form>
+    </div>
+</div>
+
+<div class="cut-main-image"></div>
+<img src="https://visitwroclaw.eu/en/themes/video/promo-wroc.jpg" class="main-image"></a>
+<div class="circle bottom-decor"></div>
+{%endblock%}
