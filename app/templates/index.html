@@ -50,13 +50,21 @@ coders responsible for file : Stanislaw Kawulok-->
                 <a href="/account">
                 <button >konto</button>
                 </a>
-                <a href="/add-event">
-                    <button >dodaj</button>
-                </a>
+                
+                <button onclick="DisplayExtra()" >więcej</button>
+                
+                
             </div>
             {%endif%}
         </nav>
     </div>
+
+    {%if loged%}
+    <div id = "extra-actions" class="hidden">
+        <a href="/user-events"><button>twoje eventy</button></a><br>
+        <a href="/add-event"><button>dodaj event</button></a><br>
+    </div>
+    {%endif%}
     <button id="menu-button" class="menu-button" onclick="ShowMenu()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -86,9 +94,8 @@ coders responsible for file : Stanislaw Kawulok-->
                 <a href="/account">
                 <button >konto</button>
                 </a>
-                <a href="/add-event">
-                    <button >dodaj</button>
-                </a>
+                <a href="/user-events"><button>twoje eventy</button></a>
+                <a href="/add-event"><button>dodaj event</button></a>
             </div>
             {%endif%}
         </nav>
@@ -111,7 +118,7 @@ coders responsible for file : Stanislaw Kawulok-->
         </h1>
     </div>
     <div class="cut-main-image"></div>
-    <img src="https://visitwroclaw.eu/en/themes/video/promo-wroc.jpg" class="main-image"></a>
+    <img src="{{ url_for('static', filename='images/background.jpg') }}" class="main-image"></a>
     <div class="circle bottom-decor"></div>
     {%endblock%}
 </body>

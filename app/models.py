@@ -15,9 +15,11 @@ class User(db.Model):
     city                = db.Column(db.String(1024), unique=False)
     description         = db.Column(db.String(4096), unique = False)
     role                = db.Column(db.String(256), unique=False)
+    like                = db.Column(db.Text, unique = False)
     is_authenticated    = True
     is_active           = True
     is_anonymous        = False
+    
 
     def get_id(self):
         return self.id
@@ -40,12 +42,13 @@ class Event(db.Model):
     description = db.Column(db.Text, unique = True)
     date        = db.Column(db.DateTime, unique = False)
     location    = db.Column(db.String(1024), unique = False)
+    like_count  = db.Column(db.Integer)
 
 #user related functions
 
 def AddUser(name:str, mail:str,password:str, city:str, description:str, role:str):
     try:
-        newUser = User(name = name, mail = mail, password = password, city = city, description = description, role = role)
+        newUser = User(name = name, mail = mail, password = password, city = city, description = description, role = role, like = '')
         newUser.set_password()
 
         db.session.add(newUser)
@@ -94,12 +97,20 @@ def EditUser(id, name, city, description, mail):
     user.mail = mail
 
     db.session.commit()
-    
+
+def DoesUserLike(title, user):
+    user_list  = user.like.split(' ')
+    event_id   = GetEventByTitle(title).id
+    print(user_list, event_id, str(event_id) in user_list)
+    if str(event_id) in user_list:
+        return False
+    return True
+
 # event related functions
 
 def AddEvent(title:str, creator:str, image:str, descriprion:str, date:datetime, location:str):
     try:
-        newEvent = Event(title = title, creator = creator, image = image, description =descriprion,date = date, location = location )
+        newEvent = Event(title = title, creator = creator, image = image, description =descriprion,date = date, location = location, like_count = 0 )
 
         db.session.add(newEvent)
         db.session.commit()
@@ -118,3 +129,21 @@ def GetEventById(id : int):
 
 def GetEventByTitle(title : str):
     return Event.query.filter_by(title = title).first()
+
+def LikeEvent(user, event_name):
+    event = GetEventByTitle(event_name)
+
+    user.like = user.like + " " + str(event.id)
+    event.like_count += 1;
+    db.session.commit()
+
+def UnlikeEvent(user, event_name):
+    event = GetEventByTitle(event_name)
+    user_list = user.like.split(' ')
+    if str(event.id) in user_list:
+
+        event.like_count -= 1;
+
+        user_list.remove(str(event.id))
+        user.like = " ".join(user_list)
+        db.session.commit()

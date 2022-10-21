@@ -15,4 +15,20 @@ function ShowMenu(){
         x.classList.add('hidden-menu');
     }
     
+
+
+}
+
+function DisplayExtra(){
+    x = document.getElementById('extra-actions')
+    if(x.classList.contains('hidden')){
+
+        x.classList.remove("hidden");
+        x.classList.add('additional-actions');
+    }else{
+
+
+        x.classList.remove("additional-actions");
+        x.classList.add('hidden');
+    }
 }

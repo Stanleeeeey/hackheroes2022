@@ -15,12 +15,13 @@
 {%for event in events%}
 <a class="event-card" style="text-decoration: none; color:black" href="{{'/event/' + event.title}}">
     <div class="event-card">
-        <img src="{{event.image}}">
+        <img src="{{url_for('static', filename='images/' + event.image)}}">
         <div class="event-info">
             <h1>{{event.title}}</h1>
             <p>data {{event.date}}</p>
             <p>miejce {{event.location}}</p>
-            <p>tworca {{event.creator}}</p>
+            <p>tworca {{GetUserById(event.creator).name}}</p>
+            <p>lubi to {{event.like_count}} osób</p>
         </div>
     </div>
 </a>
@@ -30,5 +31,5 @@
 <div class="cut-main-image">
 
 </div>
-<img src="https://visitwroclaw.eu/en/themes/video/promo-wroc.jpg" class="main-image"></a>
+<img src="{{ url_for('static', filename='images/background.jpg') }}" class="main-image"></a>
 {%endblock%}

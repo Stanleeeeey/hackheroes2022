@@ -1,6 +1,6 @@
 # file responsible for routing and operations related to User actions
 # coders responsible for file : Michal Koren, Stanislaw Kawulok
-
+import os
 import re
 from timeit import repeat
 from app import app, load_user
@@ -9,9 +9,12 @@ from flask_login import login_user, current_user, logout_user, login_required
 from app.models import *
 import jinja2
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField,EmailField, TextAreaField, SubmitField
+from wtforms import StringField,DateTimeField,PasswordField,EmailField, TextAreaField, SubmitField
+from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import InputRequired
 from werkzeug.exceptions import HTTPException
+from werkzeug.utils import secure_filename
+
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
@@ -21,7 +24,7 @@ class SingUpForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
     repeat_password = PasswordField('RepeatPassword', validators=[InputRequired()])
-    city = StringField('Username', validators=[InputRequired()])
+    city = StringField('city', validators=[InputRequired()])
     description = TextAreaField('description', validators=[InputRequired()])
     mail = EmailField('mail', validators=[InputRequired()])
     submit = SubmitField('Submit')
@@ -30,9 +33,17 @@ class EditUserForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     password = PasswordField('Password')
     repeat_password = PasswordField('RepeatPassword')
-    city = StringField('Username', validators=[InputRequired()])
+    city = StringField('city', validators=[InputRequired()])
     description = TextAreaField('description', validators=[InputRequired()])
     mail = EmailField('mail', validators=[InputRequired()])
+    submit = SubmitField('Submit')
+
+class AddEventForm(FlaskForm):
+    title = StringField('title', validators=[InputRequired()])
+    image = FileField(validators=[FileRequired()])
+    location = StringField('location', validators=[InputRequired()])
+    description = TextAreaField('description', validators=[InputRequired()])
+    date = DateTimeField('date', validators=[InputRequired()], format='%Y-%m-%d %H:%M:%S')
     submit = SubmitField('Submit')
 
 #main webpage
@@ -105,9 +116,9 @@ def all_events():
 def event(title):
     event = GetEventByTitle(title)
     if event is None:
-        return render_template('event.html', event = "None" )
+        return render_template('event.html', loged = IsLoged(), event = "None")
     else:
-        return render_template('event.html', event = event )
+        return render_template('event.html', loged = IsLoged(), event = event, like = DoesUserLike(title, current_user))
 
 @app.route('/account', methods = ['POST', 'GET'])
 @login_required
@@ -132,6 +143,50 @@ def UserAccount():
             
         EditUser(current_user.id, user, city, description, mail)
         return render_template('account.html', user = current_user, form = form, loged = IsLoged())
+
+@app.route('/add-event', methods = ['POST', 'GET'])
+@login_required
+def addevent():
+    form = AddEventForm()
+    if request.method == "GET":
+        return render_template('add-event.html', form = form)
+
+    if form.validate_on_submit():
+        title           = form.title.data
+        location        = request.form.get('location')
+        description     = request.form.get('description')
+        date            = request.form.get('date')
+
+        date            = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+
+        print(date)
+    
+        image_filename  = secure_filename(form.image.data.filename)
+
+        if AddEvent(title, current_user.id, image_filename, description, date, location):
+            form.image.data.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], image_filename
+            ))
+            flash('dodano nowe wydarzenie')
+        else:
+            flash('cos poszlo nie tak')
+
+    else:
+        flash('zle dane')
+    return render_template('add-event.html', form = form)
+
+@app.route('/like/<event>')
+@login_required
+def likeevent(event):
+    LikeEvent(current_user, event)
+    return redirect('/event/' + event)
+
+@app.route('/unlike/<event>')
+@login_required
+def unlikeevent(event):
+    UnlikeEvent(current_user, event)
+    return redirect('/event/' + event)
+
 
 @app.errorhandler(HTTPException)
 def handle_bad_request(e):
