@@ -10,7 +10,7 @@ otwórz folder hackheroes2022 w terminalu
 
 użyj komendy
 
-`pip install requirements.txt`
+`pip install -r requirements.txt`
 
 by zainstalować biblioteki
 
