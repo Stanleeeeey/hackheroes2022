@@ -149,7 +149,7 @@ def UserAccount():
 def addevent():
     form = AddEventForm()
     if request.method == "GET":
-        return render_template('add-event.html', form = form)
+        return render_template('add-event.html', form = form, loged = IsLoged())
 
     if form.validate_on_submit():
         title           = form.title.data
