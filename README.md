@@ -1,22 +1,13 @@
 # hackheroes2022
-lecimy
 
-uwaga wazna rzecz
-jak odpalacie to 
-`python run.py`
-trza miec waza i biblioteki
+jak odpalić?
 
-pawel: dodajesz plik html do app/templates 
-podlaczas go
-```html
-    <script src="{{ url_for('static', filename='js/nazwajs.js') }}" defer></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/nazwacss.css') }}">
-```
-przy czym nazwacss.css umiesc w app/static/styles ,a nazwajs.js w app/static/js
-# podzial rol
+otwórz terminal w folderze hackheroes2022
 
-backend:
-Stanlee, koren
+`$ pip install requirements.txt`
 
-frontend:
-blaze, pablo
+`$ python run.py`
+
+serwer powinien zacząć działać na localhoście i jako development server 
+
+w razie problemów prosimy napisać 
