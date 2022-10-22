@@ -169,7 +169,7 @@ def addevent():
             ))
             flash('dodano nowe wydarzenie')
         else:
-            flash('cos poszlo nie tak')
+            flash('tytuł lub opis powtarzają się lub data jest nie poprawana')
 
     else:
         flash('zle dane')
