@@ -2,11 +2,23 @@
 
 jak odpalić?
 
-otwórz terminal w folderze hackheroes2022
+Do odpalenia kodu potrzebny jest python
 
-`$ pip install requirements.txt`
+pobierz folder hackheroes2022 na swój komputer
 
-`$ python run.py`
+otwórz folder hackheroes2022 w terminalu
+
+użyj komendy
+
+`pip install -r requirements.txt`
+
+by zainstalować biblioteki
+
+oraz komendy
+
+`python run.py`
+
+by urochomić serwer
 
 serwer powinien zacząć działać na localhoście i jako development server 
 
