@@ -49,7 +49,7 @@
 .card-image{
     width:calc(50%);
     object-fit: cover;
-    height:auto;
+    height: 300px;
     border-radius:30px;
     z-index: 5;
     position: relative;
