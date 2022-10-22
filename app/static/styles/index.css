@@ -231,6 +231,14 @@ coders responsible for file :  Stanislaw Kawulok*/
     
 }
 
+.main-decor h3{
+    position: relative;
+    z-index:7;
+    
+    text-align: left;
+    
+}
+
 .main-image{
     width:100vw;
     height:100vh;

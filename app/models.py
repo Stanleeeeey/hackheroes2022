@@ -100,12 +100,17 @@ def EditUser(id, name, city, description, mail):
     db.session.commit()
 
 def DoesUserLike(title, user):
-    user_list  = user.like.split(' ')
-    event_id   = GetEventByTitle(title).id
-    
-    if str(event_id) in user_list:
+    try:
+        user_list  = user.like.split(' ')
+        event_id   = GetEventByTitle(title).id
+
+
+        
+        if str(event_id) in user_list:
+            return False
+        return True
+    except:
         return False
-    return True
 
 def GetAllLikedEvents(user):
     user_liked = user.like.split(' ')
@@ -168,9 +173,7 @@ def UnlikeEvent(user, event_name):
         db.session.commit()
 
 def GetNextEventId():
-    event = db.session.query(func.max(Event.id)).first()
-    print(event)
-    try:
-        return str(event.id +1)
-    except:
-        return '0'
+    result = Event.query.all()
+    
+
+    return str(len(result) +1)

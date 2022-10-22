@@ -196,7 +196,7 @@ def user_event():
 
 @app.errorhandler(HTTPException)
 def handle_bad_request(e):
-    return render_template('error.html', name = e.code, desc = e.description)
+    return render_template('error.html', name = e.code, desc = e.description,  loged = IsLoged() )
 
 #PODSUMOWANIE
 # TO DO
