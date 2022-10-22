@@ -1,5 +1,5 @@
 # File responsible fot initializing app
-# coders responsible for file: Stanislaw Kawulok
+
 
 from datetime import datetime
 from flask import Flask
@@ -37,8 +37,6 @@ def load_user(user_id):
     return models.GetUserById(user_id)
 with app.app_context():
     db.create_all()
-    #models.AddUser('py', 'py@py.com', 'py', 'wro', '', 'wąż')
-    #models.AddEvent('py', 'py', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png', 'okej tu bedzie kiedys opis',datetime.now(), 'miejsce ')
 
 from app import routes
 

@@ -1,0 +1,53 @@
+{%extends "index.html"%}
+
+
+{%block imports%}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/user-events.css') }}">
+
+{%endblock%}
+
+
+{%block content%}
+<div class="content">
+    <h1>Twoje eventy</h1>
+    {% for created_event in created_events%}
+    <a href={{"/event/" + created_event.title}}>
+    <div class="content-card">
+        <div class="card-data">
+            <h1>{{created_event.title}}</h1>
+            <p>autor: {{GetUserById(created_event.creator).name}}</p>
+            <p>polubiło: {{created_event.like_count}}</p>
+            <p>miejsce: {{created_event.location}}</p>
+            <p>czas: {{created_event.date}}</p>
+
+            <p>{{created_event.description}}</p>
+        </div>
+        <img class="card-image" src="{{ url_for('static', filename='images/' + created_event.image) }}" alt="">
+    </div>
+    </a>
+    {%endfor%}
+    <h1>Polubione</h1>
+    {%for liked_event in liked_events%}
+    <a href={{"/event/" + liked_event.title}}>
+    <div class="content-card">
+        <div class="card-data">
+            <h1>{{liked_event.title}}</h1>
+            <p>autor: {{GetUserById(liked_event.creator).name}}</p>
+            <p>polubiło: {{liked_event.like_count}}</p>
+            <p>miejsce: {{liked_event.location}}</p>
+            <p>czas: {{liked_event.date}}</p>
+
+            <p>{{liked_event.description}}</p>
+
+
+        </div>
+        <img class="card-image" src="{{ url_for('static', filename='images/' + liked_event.image) }}" alt="">
+    </div>
+    </a>
+    {%endfor%}
+
+</div>
+<div class="cut-main-image"></div>
+<img src="{{ url_for('static', filename='images/background.jpg') }}" class="main-image"></a>
+<div class="circle bottom-decor"></div>
+{%endblock%}

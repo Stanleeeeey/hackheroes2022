@@ -1,10 +1,11 @@
 # File responsible for database managment contains rows definitions, function to make using it simpler 
-# coders responsible for db operations: Stanislaw Kawulok
+
 
 from cmd import IDENTCHARS
 from datetime import datetime
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import func
 
 #User definition
 class User(db.Model):
@@ -101,10 +102,28 @@ def EditUser(id, name, city, description, mail):
 def DoesUserLike(title, user):
     user_list  = user.like.split(' ')
     event_id   = GetEventByTitle(title).id
-    print(user_list, event_id, str(event_id) in user_list)
+    
     if str(event_id) in user_list:
         return False
     return True
+
+def GetAllLikedEvents(user):
+    user_liked = user.like.split(' ')
+
+    ans        = []
+    for id in user_liked:
+        
+        try:
+            ans.append(Event.query.filter_by(id = int(id)).first())
+        except:
+            pass
+    return ans
+
+def GetAllCreatedEvents(user):
+
+
+    return Event.query.filter_by(creator = user.id).all()
+
 
 # event related functions
 
@@ -147,3 +166,11 @@ def UnlikeEvent(user, event_name):
         user_list.remove(str(event.id))
         user.like = " ".join(user_list)
         db.session.commit()
+
+def GetNextEventId():
+    event = db.session.query(func.max(Event.id)).first()
+    print(event)
+    try:
+        return str(event.id +1)
+    except:
+        return '0'

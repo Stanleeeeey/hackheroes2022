@@ -1,5 +1,5 @@
 # file responsible for routing and operations related to User actions
-# coders responsible for file : Michal Koren, Stanislaw Kawulok
+
 import os
 import re
 from timeit import repeat
@@ -102,14 +102,14 @@ def signup():
 @app.route('/logout')
 @login_required
 def logout():
-    print('login out')
+    
     logout_user()
-    print(IsLoged())
+    
     return redirect('/')
 
 @app.route('/events')
 def all_events():
-    print(GetAllEvents())
+    
     return render_template('events.html', events= GetAllEvents(), loged = IsLoged())
 
 @app.route('/event/<title>')
@@ -159,9 +159,9 @@ def addevent():
 
         date            = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
 
-        print(date)
+
     
-        image_filename  = secure_filename(form.image.data.filename)
+        image_filename  = "image" + GetNextEventId() + '.jpg'
 
         if AddEvent(title, current_user.id, image_filename, description, date, location):
             form.image.data.save(os.path.join(
@@ -173,7 +173,7 @@ def addevent():
 
     else:
         flash('zle dane')
-    return render_template('add-event.html', form = form)
+    return render_template('add-event.html', form = form,  loged = IsLoged())
 
 @app.route('/like/<event>')
 @login_required
@@ -186,6 +186,12 @@ def likeevent(event):
 def unlikeevent(event):
     UnlikeEvent(current_user, event)
     return redirect('/event/' + event)
+
+@app.route('/user-events')
+@login_required
+def user_event():
+
+    return render_template('user-events.html', liked_events = GetAllLikedEvents(current_user), created_events = GetAllCreatedEvents(current_user), loged = IsLoged() )
 
 
 @app.errorhandler(HTTPException)

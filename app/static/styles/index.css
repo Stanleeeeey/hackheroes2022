@@ -55,6 +55,7 @@ coders responsible for file :  Stanislaw Kawulok*/
         position: fixed;
         z-index:6;
         right:0;
+        top:1rem;
         width:calc(50vw - 3rem);
         padding:1rem;
         padding-left:2rem;
