@@ -41,10 +41,10 @@
 
 }
 
-a{
+.event a{
     color:black;
 }
 
-a:hover{
+.event a:hover{
     color:black;
 }

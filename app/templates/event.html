@@ -11,6 +11,10 @@
         <div class="circle main-decor">
             <h1>this is event you're looking for</h1>
         </div>
+        <div class="cut-main-image">
+
+        </div>
+        <img src="{{url_for('static', filename='images/background.jpg')}}" class="main-image">
     {%else%}
         <div class="event">
             <h1>{{event.title}}</h1>
@@ -43,15 +47,16 @@
                     </a>
                 {%else%}
 
-                {%endif%}
+            {%endif%}
 
             </div>
         </div>
-    {%endif%}
-
+        
     <div class="cut-main-image">
 
     </div>
     <img src="{{url_for('static', filename='images/' + event.image)}}" class="main-image"></a>
+    {%endif%}
+
 </div>
 {%endblock%}
