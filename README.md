@@ -2,6 +2,8 @@
 
 jak odpalić?
 
+pobierz folder hackheroes2022 na swój komputer
+
 otwórz terminal w folderze hackheroes2022
 
 użyj komendy
