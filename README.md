@@ -6,7 +6,7 @@ Do odpalenia kodu potrzebny jest python
 
 pobierz folder hackheroes2022 na swój komputer
 
-otwórz terminal w folderze hackheroes2022
+otwórz folder hackheroes2022 w terminalu
 
 użyj komendy
 
