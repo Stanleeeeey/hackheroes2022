@@ -10,4 +10,4 @@ otwórz terminal w folderze hackheroes2022
 
 serwer powinien zacząć działać na localhoście i jako development server 
 
-w razie problemów proszę pisać
+w razie problemów prosimy napisać 
