@@ -8,13 +8,13 @@ otwórz terminal w folderze hackheroes2022
 
 użyj komendy
 
-`$ pip install requirements.txt`
+`pip install requirements.txt`
 
 by zainstalować biblioteki
 
 oraz komendy
 
-`$ python run.py`
+`python run.py`
 
 by urochomić serwer
 
